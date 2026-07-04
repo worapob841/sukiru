@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-This repo packages a Claude Code **skill**, `zumen`, under [`skills/zumen/`](./skills/zumen/) — the catalog layout the [`skills`](https://github.com/vercel-labs/skills) CLI discovers (`npx skills add worapob841/skill-zumen`; see [`README.md`](./README.md)). It is **prompt/content engineering, not application code**: every file is Markdown that an *agent reads and executes* at runtime. There is no source code, package manifest, or build/test/lint tooling.
+This repo packages a Claude Code **skill**, `zumen`, under [`skills/zumen/`](./skills/zumen/) — the catalog layout the [`skills`](https://github.com/vercel-labs/skills) CLI discovers (`npx skills add worapob841/sukiru`; see [`README.md`](./README.md)). It is **prompt/content engineering, not application code**: every file is Markdown that an *agent reads and executes* at runtime. There is no source code, package manifest, or build/test/lint tooling.
 
 The `zumen` skill plans projects: it interviews the user one question at a time, co-designs an architecture, phases the work, writes a `plans/` doc bundle, and then **stops before any implementation**. Working in this repo means *maintaining the skill's instructions and output templates* — not running them.
 
