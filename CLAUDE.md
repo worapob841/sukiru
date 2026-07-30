@@ -42,6 +42,7 @@ These span multiple files and are *why* the skill works — break one and behavi
 - **One question per turn** in the grill; **every question leads with a recommended answer + a one-line why**.
 - **Copy templates; don't free-hand structure.** To change a doc's shape, edit the *template*, not the prose that tells the agent to reconstruct it.
 - **Real date, every time** — filenames and citations depend on it; never a guessed date.
+- **Companion skills are optional, never hard dependencies.** References to `grill-with-docs`, `superpowers:brainstorming`, `superpowers:writing-plans` (and `grill-me`) must degrade gracefully — zumen completes every stage using only its own checklist/templates when they aren't installed.
 
 ## Cross-file coupling — keep these in sync when editing
 
@@ -49,7 +50,7 @@ The same contracts are intentionally restated in several places. Touch one, audi
 
 - The **4-doc bundle definition** appears in `SKILL.md`'s "What it produces" table, the "Conversation → doc mapping" table, Stage 4, and `interview-scratchpad.md`. Adding/removing a doc means updating all of them *plus* the matching `templates/` file.
 - The **stage list and the `digraph`** in `SKILL.md` must stay consistent with each other.
-- `SKILL.md` **hardcodes paths** to every `templates/*.md`, to `references/interview-checklist.md`, and to sibling skills (e.g. `../grill-me/SKILL.md`, assuming the standard `.claude/skills/<name>/` install layout). Renaming or moving a file requires grep-updating `SKILL.md`.
+- `SKILL.md` **hardcodes paths** to every `templates/*.md`, to `references/interview-checklist.md`, and to sibling skills assuming the standard `.claude/skills/<name>/` install layout (e.g. `../grill-me/SKILL.md`). It also **names plugin-scoped companion skills by name only** — `superpowers:brainstorming`, `superpowers:writing-plans` — since those aren't co-located siblings and can't be linked by relative path. Renaming/moving a file, or a referenced skill disappearing, requires grep-updating `SKILL.md`.
 
 ## Conventions
 

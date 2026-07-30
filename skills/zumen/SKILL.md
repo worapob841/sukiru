@@ -7,8 +7,10 @@ description: Plan a project or major feature end-to-end — interview the user o
 
 Turn a fuzzy idea into a crystal-clear, well-architected, phased plan — and write it out as a
 `plans/` documentation bundle. zumen **interviews** the user to lock requirements (the
-`grill-me` technique), **co-designs** the architecture (the `brainstorming` technique), **phases**
-the work, then **writes the docs and STOPS**. It plans; it does not implement.
+`grill-with-docs` methodology — grilling that writes decisions down as they crystallize),
+**co-designs** the architecture (recommending `superpowers:brainstorming` for open-ended
+exploration before narrowing down), **phases** the work (recommending `superpowers:writing-plans`
+to pressure-test the breakdown), then **writes the docs and STOPS**. It plans; it does not implement.
 
 This skill is **domain-neutral** — it carries no project's specifics. When it runs inside a repo that
 has a `CLAUDE.md`, it reads it and makes the output *conform* to that repo's house rules, but it never
@@ -73,7 +75,11 @@ never reconstruct a doc's structure from memory.
   plans. Go?"*
 
 ### Stage 1 — Grill (requirements interview)
-Walk `references/interview-checklist.md` branch-by-branch, dependencies-first. Hard rules:
+Follows the **`grill-with-docs`** methodology: relentless one-question-at-a-time interview that
+writes decisions down the moment they crystallize, not at the end. **If `grill-with-docs` (or its
+`grilling`/`domain-modeling` parts) is installed, invoke it directly for this stage** — it keeps a
+living glossary/ADR alongside the interview. Otherwise, run the grill yourself by walking
+`references/interview-checklist.md` branch-by-branch, dependencies-first. Hard rules:
 - **ONE question per turn.** Never batch. Wait for the answer before the next question.
 - **Every question carries a recommended answer + a one-line why.** Prefer A/B/C when the option space is small.
 - **Explore, don't ask.** Before asking, check whether the codebase already answers it. If it does,
@@ -90,8 +96,10 @@ transcript. On a fresh invocation, if a scratch file for this topic exists, read
 resolved = X; next = Y," and resume from `## Next action` — **never restart the interview.**
 
 ### Stage 2 — Architecture proposal & discussion
-Enter only once requirements are locked. For each genuinely-open axis (stack, datastore, infra/deploy,
-key integrations, and the 1-2 hard problems specific to this feature):
+Enter only once requirements are locked. **If the design space is genuinely open, invoke
+`superpowers:brainstorming` first** to explore approaches broadly before narrowing down. Then, for
+each genuinely-open axis (stack, datastore, infra/deploy, key integrations, and the 1-2 hard
+problems specific to this feature):
 - Present **2-3 approaches** with a compact trade-off; **lead with the recommendation + why.**
 - **Present in sections scaled to complexity, and get approval after each** before continuing. No
   single architecture wall-dump.
@@ -101,6 +109,8 @@ key integrations, and the 1-2 hard problems specific to this feature):
 - Every axis that had real alternatives becomes a QN in the decision record.
 
 ### Stage 3 — Phasing & complexity
+- **Where the initiative is large enough to warrant it, recommend `superpowers:writing-plans` to
+  pressure-test the phase breakdown** before committing it to `task.md`'s pinned shape.
 - Decompose the approved design into `## Phase N — Title (timeline)` blocks, each with **Goal:** /
   **Deliverables:** / **Dependencies:** + subtask checkboxes.
 - Rate each subtask **S/M/L** (`S = ≤1 day · M = 2–4 days · L = 5+ days`). EXTEND mode: reuse the
@@ -199,6 +209,9 @@ digraph zumen {
   continue phase numbering; surface conflicts instead of silently overriding them.
 - **Stay generic.** This skill conforms to the host repo's CLAUDE.md but carries no project's specifics.
 - **The gate is absolute.** zumen ends at approved docs. Implementation is a separate invocation.
+- **Companion skills, not hard dependencies.** Prefer `grill-with-docs` / `superpowers:brainstorming`
+  / `superpowers:writing-plans` when installed for a richer Stage 1/2/3 — but zumen's own
+  checklist, templates, and decision record must still complete the job standalone.
 
 ## Edge cases & gotchas
 
@@ -219,6 +232,10 @@ digraph zumen {
   the slug or suffix `-2` — never clobber.
 - **Scope too big for one bundle.** Decompose first; zumen the first sub-project; note the rest as
   future bundles. Don't emit a 12-phase `task.md` that's really four projects.
+- **Companion skill not installed.** Don't stall or error if `grill-with-docs` /
+  `superpowers:brainstorming` / `superpowers:writing-plans` aren't available — continue with
+  zumen's own checklist-walk / architecture-proposal / phasing steps. They enrich the flow; they
+  never gate it.
 
 ## Worked example (the two trickiest shapes)
 
