@@ -7,6 +7,7 @@ A personal catalog of [Claude Code](https://claude.ai/code) **skills** — insta
 | Skill | What it does |
 |---|---|
 | [`autoresearch`](./skills/autoresearch) | Autonomous hypothesis-test-eval loop based on Karpathy's autoresearch concept — auto-probes system hardware, asks 3 onboarding questions (task/goal, tracking strategy, env runner), and loops non-stop with auto-commit/revert and progress plots (`autoresearch_progress.png`). |
+| [`company-research`](./skills/company-research) | Deep-dive fundamental equity and REIT research blueprint — combines 3-Pillar forensic fraud scan, Business Model Canvas, 3-lens evaluation (PE, Ray Dalio macro, Value Investing), conditional REIT tech-durability audit, and Thai cross-border investor logistics into a comprehensive single- or multi-file report. |
 | [`delegating-to-opencode`](./skills/delegating-to-opencode) | Delegates bounded, self-contained coding tasks to the local `opencode` CLI agent with strict model prompting, isolation, and independent verification rules. |
 | [`zumen`](./skills/zumen) | Turns a fuzzy idea into a phased, well-architected plan — interviews you one question at a time, compares 2–3 architecture approaches, breaks the work into phases, writes a cross-linked `plans/` doc bundle, and **stops before any implementation**. |
 
@@ -31,6 +32,7 @@ Handy variants:
 
 ```bash
 npx skills add worapob841/sukiru --skill autoresearch          # install autoresearch skill
+npx skills add worapob841/sukiru --skill company-research      # install company-research skill
 npx skills add worapob841/sukiru --skill delegating-to-opencode # install delegating-to-opencode skill
 npx skills add worapob841/sukiru --skill zumen                # install zumen skill
 npx skills add worapob841/sukiru -a claude-code -y            # non-interactive, target Claude Code
@@ -43,6 +45,7 @@ The CLI auto-detects which agents you have installed (pass `-a claude-code`, rep
 ```bash
 git clone git@github.com:worapob841/sukiru.git
 cp -r sukiru/skills/autoresearch ~/.claude/skills/autoresearch   # copy autoresearch skill
+cp -r sukiru/skills/company-research ~/.claude/skills/company-research # copy company-research skill
 cp -r sukiru/skills/delegating-to-opencode ~/.claude/skills/delegating-to-opencode # copy delegating-to-opencode skill
 cp -r sukiru/skills/zumen ~/.claude/skills/zumen                 # copy zumen skill
 ```
@@ -65,6 +68,20 @@ Key capabilities:
   3. *Environment*: Env manager (`conda`, `uv`, `venv`, `poetry`, `pixi`) and run command.
 - **Non-Stop Autonomous Execution**: Runs experiments, evaluates metrics, auto-commits gains, auto-reverts regressions, and continues without manual intervention between iterations.
 - **Progress Graph Visualizer (`scripts/plot_progress.py`)**: Renders Karpathy-style progress charts (`autoresearch_progress.png`) showing discarded grey dots, kept green dots, running best step-line, and angled hypothesis annotations. Supports both on-demand mid-run plot rendering and final summary plot generation.
+
+### company-research
+
+`company-research` executes institutional-grade fundamental analysis of any public company, business, or REIT for investment decision-making, based on an institutional Company Research Blueprint.
+
+The core principle: **Forensic financial scan → Business Model Canvas deconstruction → 3-lens philosophical evaluation (PE / Macro / VI) → Conditional tech audit (if REIT) → Actionable cross-border execution.**
+
+Key capabilities:
+- **3-Pillar Financial Scan (Fraud & Earnings Quality)**: Scans for aggressive revenue recognition (DSO expansion), CFO vs Net Income divergence, and balance sheet debt wall risks.
+- **Business Model Canvas & Shareholder Register**: Granular 9-block breakdown with deep product/customer focus, recent M&A impact, free float %, and founder/activist stakes.
+- **3-Lens Evaluation**: Analyzes the asset through Private Equity (operational optimization & LBO capacity), Ray Dalio (macro regime & debt cycle resilience), and Value Investing (economic moat & margin of safety) perspectives.
+- **Conditional REIT / Data Center Tech Audit**: Evaluates structural floor loading ($\ge 1,500\text{ kg/m}^2$), power headroom, carrier-neutral network hubs, and sponsor capital recycling if the target is a REIT.
+- **Cross-Border & Thai Investor Logistics**: Evaluates exchange liquidity, Thailand Section 41 foreign income tax/repatriation, foreign estate tax (e.g. US 40% estate tax), broker fees (Dime, InnovestX, IBKR), and Thai mutual fund feeder exposures.
+- **Flexible Report Packaging**: Dynamically delivers either a single consolidated `.md` report or breaks extensive deep-dives into a multi-file folder bundle (`reports/<TICKER>/`).
 
 ### delegating-to-opencode
 
@@ -102,6 +119,8 @@ skills/
     SKILL.md                    # onboarding + autonomous loop workflow
     scripts/
       plot_progress.py          # progress graph visualizer (matplotlib)
+  company-research/             # the company-research skill
+    SKILL.md                    # fundamental analysis workflow, templates & logistics
   delegating-to-opencode/       # the delegating-to-opencode skill
     SKILL.md                    # opencode CLI delegation rules & verification
   zumen/                        # the zumen skill
